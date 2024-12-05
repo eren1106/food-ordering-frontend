@@ -6,17 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-
-interface FoodItem {
-  id: number
-  name: string
-  price: number
-}
-
-interface OrderItem {
-  foodId: number
-  quantity: number
-}
+import { FoodItem, ItemQuantity } from '@/interfaces'
 
 const foodItems: FoodItem[] = [
   { id: 1, name: "Burger", price: 5.99 },
@@ -27,7 +17,7 @@ const foodItems: FoodItem[] = [
 ]
 
 export default function Home() {
-  const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const [orderItems, setOrderItems] = useState<ItemQuantity[]>([]);
   const router = useRouter();
 
   const handleQuantityChange = (foodId: number, quantity: number) => {

@@ -7,29 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { toast } from '@/hooks/use-toast'
-
-interface FoodItem {
-  id: number
-  name: string
-  price: number
-}
-
-interface ItemQuantity {
-  foodId: number
-  quantity: number
-}
-
-interface OrderItem {
-  item: FoodItem
-  quantity: number
-}
-
-interface CheckoutDetail {
-  orderItems: OrderItem[]
-  subTotal: number
-  serviceCharge: number
-  total: number
-}
+import { CheckoutDetail, ItemQuantity } from '@/interfaces'
 
 export default function CheckoutPage() {
   const [checkoutDetail, setCheckoutDetail] = useState<CheckoutDetail | null>(null)
