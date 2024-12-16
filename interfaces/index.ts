@@ -5,7 +5,7 @@ export interface FoodItem {
 }
 
 export interface ItemQuantity {
-  foodId: number
+  itemId: number
   quantity: number
 }
 

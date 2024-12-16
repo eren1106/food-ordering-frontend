@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Order } from '@/interfaces'
+import { SERVER_URL } from '@/constants'
 
 async function getOrder(id: string): Promise<Order | null> {
-  const response = await fetch(`/api/orders/${id}`, {
+  const response = await fetch(`${SERVER_URL}/orders/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

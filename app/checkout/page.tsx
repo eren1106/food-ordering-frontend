@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { toast } from '@/hooks/use-toast'
 import { CheckoutDetail, ItemQuantity } from '@/interfaces'
+import { SERVER_URL } from '@/constants'
 
 export default function CheckoutPage() {
   const [checkoutDetail, setCheckoutDetail] = useState<CheckoutDetail | null>(null)
@@ -19,12 +20,12 @@ export default function CheckoutPage() {
       const items = searchParams.get('items')
       if (!items) return
 
-      const response = await fetch('/api/checkout', {
+      const response = await fetch(`${SERVER_URL}/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ items: JSON.parse(items) as ItemQuantity[] }),
+        body: JSON.stringify([...JSON.parse(items) as ItemQuantity[]]),
       })
 
       if (response.ok) {
@@ -46,12 +47,12 @@ export default function CheckoutPage() {
     const items = searchParams.get('items')
     if (!items) return;
 
-    const response = await fetch('/api/order', {
+    const response = await fetch(`${SERVER_URL}/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ items: JSON.parse(items) as ItemQuantity[] }),
+      body: JSON.stringify([...JSON.parse(items) as ItemQuantity[] ]),
     })
 
     if (response.ok) {

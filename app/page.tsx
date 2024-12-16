@@ -20,21 +20,21 @@ export default function Home() {
   const [orderItems, setOrderItems] = useState<ItemQuantity[]>([]);
   const router = useRouter();
 
-  const handleQuantityChange = (foodId: number, quantity: number) => {
+  const handleQuantityChange = (itemId: number, quantity: number) => {
     if (quantity < 0) return; // Prevent negative quantity
 
     setOrderItems(prevOrderItems => {
-      const existingItem = prevOrderItems.find(item => item.foodId === foodId);
+      const existingItem = prevOrderItems.find(item => item.itemId === itemId);
       if (existingItem) {
         if (quantity === 0) {
-          return prevOrderItems.filter(item => item.foodId !== foodId);
+          return prevOrderItems.filter(item => item.itemId !== itemId);
         } else {
           return prevOrderItems.map(item =>
-            item.foodId === foodId ? { ...item, quantity } : item
+            item.itemId === itemId ? { ...item, quantity } : item
           );
         }
       } else {
-        return [...prevOrderItems, { foodId, quantity }];
+        return [...prevOrderItems, { itemId, quantity }];
       }
     });
   };
@@ -51,7 +51,7 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           {foodItems.map(item => {
-            const orderItem = orderItems.find(order => order.foodId === item.id);
+            const orderItem = orderItems.find(order => order.itemId === item.id);
             const quantity = orderItem ? orderItem.quantity : 0;
             return (
               <div key={item.id} className="flex items-center justify-between py-2">
