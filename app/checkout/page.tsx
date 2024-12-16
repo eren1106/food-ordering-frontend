@@ -61,7 +61,7 @@ export default function CheckoutPage() {
         description: "Your order has been successfully placed.",
         duration: 2000,
       })
-      router.push('/order-confirmation')
+      router.push(`/orders/${(await response.json()).id}`)
     } else {
       toast({
         title: "Order Failed",

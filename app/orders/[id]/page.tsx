@@ -19,7 +19,7 @@ async function getOrder(id: string): Promise<Order | null> {
     return null
   }
 
-  const data = await response.json()
+  const data = await response.json();
   return data
 }
 
@@ -35,7 +35,7 @@ export default async function OrderDetailPage({ params }: { params: { id: string
       <Button variant="ghost" asChild className="mb-4">
         <Link href="/orders">
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Orders
+          View Order History
         </Link>
       </Button>
       <Card>
